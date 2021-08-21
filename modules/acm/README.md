@@ -36,10 +36,6 @@ To deploy this config:
   * [GitHub](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
   * [Gitlab](https://docs.gitlab.com/ee/ssh/)
 
-## Whitelisting
-Note that installing Anthos Config Management [requires](https://cloud.google.com/anthos-config-management/docs/how-to/installing#local_environment) an active Anthos license.
-By default, this module will attempt to download the ACM operator from Google directly—meaning your Terraform service account needs to be whitelisted for ACM access. If this is an issue, you can predownload the operator yourself then set the `operator_path` variable to point to the file location.
-
  <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
 

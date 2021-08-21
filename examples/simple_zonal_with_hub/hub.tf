@@ -21,3 +21,19 @@ module "hub" {
   cluster_name     = module.gke.name
   cluster_endpoint = module.gke.endpoint
 }
+
+module "config-sync" {
+  source       = "../../modules/config-sync"
+  project_id   = var.project_id
+  location     = module.gke.location
+  cluster_name = module.gke.name
+
+  create_membership = false
+  cluster_membership_id = module.hub.cluster_membership_id
+
+  sync_repo   = "git@github.com:GoogleCloudPlatform/csp-config-management.git"
+  sync_branch = "1.0.0"
+  policy_dir  = "foo-corp"
+
+  secret_type = "ssh"
+}

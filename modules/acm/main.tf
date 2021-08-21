@@ -30,7 +30,7 @@ module "acm_operator" {
   cluster_name          = var.cluster_name
   project_id            = var.project_id
   location              = var.location
-  cluster_membership_id = module.registration.membership_id
+  cluster_membership_id = module.registration.cluster_membership_id
 
   source_format = var.source_format
   sync_repo     = var.sync_repo

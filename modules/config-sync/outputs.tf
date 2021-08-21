@@ -15,7 +15,11 @@
  */
 
 output "git_creds_public" {
-  description = "Public key of SSH keypair to allow the Config Sync Operator to authenticate to your Git repository."
-  value       = module.configsync_operator.git_creds_public
+  description = "Public key of SSH keypair to allow the Anthos Config Management Operator to authenticate to your Git repository."
+  value       = module.acm_operator.git_creds_public
 }
 
+output "wait" {
+  description = "An output to use when you want to depend on cmd finishing"
+  value       = module.acm_operator.wait
+}

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-output "membership_id" {
+output "cluster_membership_id" {
   description = "The ID of the hub membership"
   value       = google_gke_hub_membership.primary[0].membership_id
   depends_on = [
