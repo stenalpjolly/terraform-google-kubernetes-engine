@@ -12,13 +12,9 @@ It incorporates the standard cluster module, the [registration module](../../mod
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | cluster\_name\_suffix | A suffix to append to the default cluster name | `string` | `""` | no |
-| ip\_range\_pods | The secondary ip range to use for pods | `string` | `""` | no |
-| ip\_range\_services | The secondary ip range to use for services | `string` | `""` | no |
-| network | The VPC network to host the cluster in | `string` | `"default"` | no |
 | project\_id | The project ID to host the cluster in | `any` | n/a | yes |
-| region | The region to host the cluster in | `any` | n/a | yes |
-| subnetwork | The subnetwork to host the cluster in | `string` | `"default"` | no |
-| zones | The zone to host the cluster in (required if is a zonal cluster) | `list(string)` | n/a | yes |
+| region | The region to host the cluster in | `string` | `"us-central1"` | no |
+| zone | The zone to host the cluster in | `string` | `"us-central1-a"` | no |
 
 ## Outputs
 
@@ -33,7 +29,7 @@ It incorporates the standard cluster module, the [registration module](../../mod
 | location | n/a |
 | master\_kubernetes\_version | The master Kubernetes version |
 | network | n/a |
-| project\_id | n/a |
+| project\_id | Standard test outputs |
 | region | n/a |
 | service\_account | The default service account used for running nodes. |
 | subnetwork | n/a |
