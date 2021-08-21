@@ -4,6 +4,29 @@ This example illustrates how to create a simple cluster and install [Anthos Conf
 
 It incorporates the standard cluster module and the [ACM install module](../../modules/acm).
 
+## Verifying Success
+
+After applying the Terraform configuration, you can run the following commands to verify that your cluster has synced correctly:
+
+1. Check ACM install status:
+
+    ```
+    gcloud config set project $(terraform output --raw project_id)
+    gcloud alpha container hub config-management status
+    ```
+
+2. Connect to the cluster:
+
+    ```
+    gcloud container clusters get-credentials $(terraform output --raw cluster_name) --zone=$(terraform output --raw location)
+    ```
+
+3. Confirm the `shipping-dev` namespace was created:
+
+    ```
+    kubectl describe ns shipping-dev
+    ```
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
 
