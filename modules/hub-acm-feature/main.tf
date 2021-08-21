@@ -19,22 +19,13 @@ locals {
   k8sop_creds_secret_key = var.secret_type == "cookiefile" ? "cookie_file" : var.secret_type
 }
 
-module "registration" {
-  source = "../hub"
-
-  cluster_name                = var.cluster_name
-  project_id                  = var.project_id
-  location                    = var.location
-  enable_gke_hub_registration = var.create_membership
-}
-
 resource "google_gke_hub_feature_membership" "main" {
   provider = google-beta
 
   location = "global"
   feature  = "configmanagement"
 
-  membership = var.cluster_membership_id != "" ? var.cluster_membership_id : module.registration.membership_id
+  membership = var.cluster_membership_id
   project    = var.project_id
 
   configmanagement {

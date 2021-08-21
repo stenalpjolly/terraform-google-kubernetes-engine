@@ -14,13 +14,23 @@
  * limitations under the License.
  */
 
+module "registration" {
+  source = "../hub"
+
+  cluster_name                = var.cluster_name
+  project_id                  = var.project_id
+  location                    = var.location
+  enable_gke_hub_registration = var.create_membership
+  gke_hub_membership_name     = var.cluster_membership_id
+}
+
 module "acm_operator" {
   source = "../hub-acm-feature"
 
   cluster_name          = var.cluster_name
   project_id            = var.project_id
   location              = var.location
-  cluster_membership_id = var.cluster_membership_id
+  cluster_membership_id = module.registration.membership_id
 
   source_format = var.source_format
   sync_repo     = var.sync_repo
