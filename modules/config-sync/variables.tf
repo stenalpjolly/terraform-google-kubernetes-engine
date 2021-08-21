@@ -29,7 +29,7 @@ variable "location" {
   type        = string
 }
 
-variable "create_membership"  {
+variable "create_membership" {
   description = "Whether to create a new membership."
   type        = bool
   default     = true
