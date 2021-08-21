@@ -19,6 +19,5 @@ module "hub" {
   project_id              = var.project_id
   location                = module.gke.location
   cluster_name            = module.gke.name
-  cluster_endpoint        = module.gke.endpoint
   gke_hub_membership_name = "gke-asm-membership"
 }
