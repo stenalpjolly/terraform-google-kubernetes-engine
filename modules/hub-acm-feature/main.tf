@@ -20,12 +20,12 @@ locals {
 }
 
 module "registration" {
-  source = "../hub-gke"
+  source = "../hub"
 
   cluster_name                = var.cluster_name
   project_id                  = var.project_id
   location                    = var.location
-  enable_gke_hub_registration = var.cluster_membership_id == "" ? true : false
+  enable_gke_hub_registration = var.create_membership
 }
 
 resource "google_gke_hub_feature_membership" "main" {

@@ -1,6 +1,6 @@
 # Terraform Kubernetes Engine Hub Submodule
 
-This module [registers a Kubernetes cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster) in an Anthos [Environ](https://cloud.google.com/anthos/multicluster-management/environs).
+This module [registers a GKE cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster) in an Anthos [Environ](https://cloud.google.com/anthos/multicluster-management/environs).
 
 Specifically, this module automates the following steps for [registering a cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
@@ -14,19 +14,11 @@ module "hub" {
 
   project_id       = "my-project-id"
   cluster_name     = "my-cluster-name"
-  location         = module.gke.location
-  cluster_endpoint = module.gke.endpoint
 }
 ```
 
 To deploy this config:
 1. Run `terraform apply`
-
-## Requirements
-
-- Anthos [Environs](https://cloud.google.com/anthos/multicluster-management/environs) require an active Anthos license.
-
-
 
  <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
@@ -42,7 +34,7 @@ To deploy this config:
 | hub\_project\_id | The project in which the GKE Hub belongs. | `string` | `""` | no |
 | labels | Comma separated labels in the format name=value to apply to cluster in the GCP Console. | `string` | `""` | no |
 | location | The location (zone or region) this cluster has been created in. | `string` | n/a | yes |
-| module\_depends\_on | List of modules or resources this module depends on. | `list(any)` | `[]` | no |
+| module\_depends\_on | List of modules or resources this module depends on. | `list` | `[]` | no |
 | project\_id | The project in which the resource belongs. | `string` | n/a | yes |
 | sa\_private\_key | Private key for service account base64 encoded. Required only if `use_existing_sa` is set to `true`. | `string` | `null` | no |
 | use\_existing\_sa | Uses an existing service account to register membership. Requires sa\_private\_key | `bool` | `false` | no |
