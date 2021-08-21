@@ -34,4 +34,6 @@ module "k8sop_creds_secret" {
 
   kubectl_create_command  = local.private_key != null ? "kubectl create secret generic ${var.operator_credential_name} -n=${var.operator_credential_namespace} --from-literal=${local.k8sop_creds_secret_key}='${local.private_key}'" : ""
   kubectl_destroy_command = "kubectl delete secret ${var.operator_credential_name} -n=${var.operator_credential_namespace}"
+
+  depends_on = [google_gke_hub_feature_membership.main]
 }

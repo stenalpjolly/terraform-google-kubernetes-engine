@@ -62,8 +62,4 @@ resource "google_gke_hub_feature_membership" "main" {
       }
     }
   }
-
-  depends_on = [
-    module.k8sop_creds_secret.wait
-  ]
 }

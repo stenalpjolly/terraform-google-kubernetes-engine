@@ -40,6 +40,7 @@ module "acm_operator" {
   create_ssh_key = var.create_ssh_key
   secret_type    = var.secret_type
   ssh_auth_key   = var.ssh_auth_key
+  policy_dir    = var.policy_dir
 
   enable_policy_controller = false
 

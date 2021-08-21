@@ -1,5 +1,6 @@
+
 /**
- * Copyright 2018 Google LLC
+ * Copyright 2021 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,19 +15,10 @@
  * limitations under the License.
  */
 
-output "cluster_membership_id" {
-  description = "The ID of the hub membership"
-  value       = var.enable_gke_hub_registration ? google_gke_hub_membership.primary[0].membership_id : local.gke_hub_membership_name
-  depends_on = [
-    google_gke_hub_membership.primary
-  ]
-}
+terraform {
+  required_version = ">= 0.13.0"
 
-
-output "wait" {
-  description = "An output to use when you want to depend on registration finishing"
-  value       = local.gke_hub_membership_name
-  depends_on = [
-    google_gke_hub_membership.primary
-  ]
+  provider_meta "google" {
+    module_name = "blueprints/terraform/terraform-google-kubernetes-engine:acm/v15.0.2"
+  }
 }
