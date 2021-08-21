@@ -17,5 +17,5 @@
 module "example" {
   source = "../../../examples/simple_zonal_with_acm"
 
-  project_id          = var.project_ids[1]
+  project_id = var.project_ids[1]
 }
