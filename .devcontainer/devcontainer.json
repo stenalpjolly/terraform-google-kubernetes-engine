@@ -1,0 +1,41 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/alpine
+{
+	"name": "Terraform Dev Container",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "gcr.io/google.com/cloudsdktool/google-cloud-cli:slim",
+
+	"features": {
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+		"ghcr.io/devcontainers/features/terraform:1": {
+			"tflint": "none",
+			"terragrunt": "none"
+		}
+	},
+	
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"hashicorp.terraform",
+				"ms-vscode.makefile-tools"
+			]
+		}
+	},
+
+	// // Mount host docker socket into container so you can run docker commands from within the container
+	"mounts": [
+		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+	],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	"postStartCommand": "echo alias tf='terraform' >> ~/.bashrc",
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "terraform init"
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
